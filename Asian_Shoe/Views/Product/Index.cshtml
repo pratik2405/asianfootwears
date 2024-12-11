@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Asian_Shoe.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image_Url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category_name)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Image_Url)" height="200" width="200"/>
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Product_id }, new { @class = "btn btn-primary" })  <br /><br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Product_id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

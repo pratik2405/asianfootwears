@@ -1,0 +1,50 @@
+﻿@model Asian_Shoe.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="row align-items-center">
+        <h3 class="mb-3 text-center">@Model.Product_name</h3>
+        <!-- Image Section -->
+        <div class="col-md-4 text-center">
+            <img src="@Url.Content(Model.Image_Url)" class="img-fluid rounded" alt="Product Image" style="max-height: 800px;max-width:400px; object-fit: cover;">
+        </div>
+
+        <!-- Details Section -->
+        <div class="col-md-8">
+           
+            <dl class="row">
+                <dt class="col-sm-4">Description</dt>
+                <dd class="col-sm-8">@Model.Description</dd>
+
+                <dt class="col-sm-4">Price</dt>
+                <dd class="col-sm-8"><b>₹ @Model.Price </b></dd>
+
+                <dt class="col-sm-4">Stock</dt>
+                <dd class="col-sm-8">@Model.Stock</dd>
+
+                <dt class="col-sm-4">Category</dt>
+                <dd class="col-sm-8">@Model.Category_name</dd>
+
+                <dt class="col-sm-4">Category ID</dt>
+                <dd class="col-sm-8">@Model.Category_id</dd>
+
+                 @if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Admin")) || !string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Customer")))
+                 {
+                <dt>
+                    @Html.ActionLink("Add To Cart", "AddToCart", "Cart", new { productId = Model.Product_id }, new { @class = "btn btn-sm btn-warning w-60 text-center" }) <br />
+                    
+                </dt>
+                  }
+            </dl>
+            
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a class="btn btn-secondary" asp-action="DisplayProduct"> <strong>Back </strong></a>
+</div>
+

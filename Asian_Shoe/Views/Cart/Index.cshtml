@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Asian_Shoe.Models.Cart>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            int count = 1;
+        <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Cart_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Cart_id }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Cart_id })
+            </td>
+        </tr>
+        count++;
+}
+    </tbody>
+</table>
