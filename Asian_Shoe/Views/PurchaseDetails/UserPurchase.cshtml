@@ -61,29 +61,12 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-           @*  <td>
-                @Html.DisplayFor(modelItem => item.Purchase_Details_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.purchase_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.user_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.product_id)
-            </td> *@
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Product_name)
                 </td>
             <td>
                 <img src="@Url.Content(item.Image_url)" height="200" width="200" />
             </td>
-
-                @* <td>
-                    @Html.DisplayFor(modelItem => item.status_id)
-                </td> *@
                     <td>
                         @if (item.status_id == 1)
                         {

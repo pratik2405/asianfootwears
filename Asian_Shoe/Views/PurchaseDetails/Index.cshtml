@@ -4,6 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
+@{
+    var userDictionary = ViewBag.User as Dictionary<int, string>; // Cast ViewBag.User to a dictionary
+    var productDictionary = ViewBag.Product as Dictionary<int, string>; // Cast ViewBag.Product to a dictionary
+}
+
 <h1>Purchase Details</h1>
 
 <table class="table">
@@ -49,14 +54,30 @@
             <td>
                 @Html.DisplayFor(modelItem => item.purchase_id)
             </td>
+            @* <td>
+               @Html.DisplayFor(modelItem => item.user_id) 
+   
+            </td> *@ 
+                <td>
+                    @if (userDictionary != null && userDictionary.ContainsKey(item.user_id))
+                    {
+                        @userDictionary[item.user_id] <!-- Display the user name -->
+                    }
+                    else
+                    {
+                                <span>User not found</span>
+                    }
+                    </td>
             <td>
-                @Html.DisplayFor(modelItem => item.user_id)
+                    @if (productDictionary != null && productDictionary.ContainsKey(item.product_id))
+                    {
+                        @productDictionary[item.product_id] <!-- Display the product name -->
+                    }
+                    else
+                    {
+                        <span>Product not found</span>
+                    }
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.product_id)
-            </td>
-            
-               @*  @Html.DisplayFor(modelItem => item.status_id) *@
                 <td>
                         @if (item.status_id == 1)
                         {

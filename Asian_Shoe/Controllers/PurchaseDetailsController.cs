@@ -11,20 +11,21 @@ namespace Asian_Shoe.Controllers
         private readonly IStatusServices statusServices;
         private readonly IRoleServices roleServices;
         private readonly IRegistrationServices registrationServices;
+        private readonly IProductServices productServices;
       
-        public PurchaseDetailsController(IPurchaseDetailsServices services, IStatusServices statusServices, IRoleServices roleServices, IRegistrationServices registrationServices)
+        public PurchaseDetailsController(IPurchaseDetailsServices services, IStatusServices statusServices, IRegistrationServices registrationServices, IProductServices productServices)
         {
             this.services = services;
             this.statusServices = statusServices;
             this.roleServices = roleServices;
             this.registrationServices = registrationServices;
+            this.productServices = productServices;
         }
         // GET: PurchaseDetailsController
         public ActionResult Index()
         {
-            ViewBag.Status = statusServices.GetStatuses();
-            ViewBag.Role=roleServices.GetRoles();
-            ViewBag.User=registrationServices.GetAllUser();
+            ViewBag.Product = productServices.GetAllProduct().ToDictionary(p => p.Product_id, p => p.Product_name);
+            ViewBag.User = registrationServices.GetAllUser().ToDictionary(u => u.User_id, u => u.First_name);
             var res=services.GetAll();
             return View(res);
         }
