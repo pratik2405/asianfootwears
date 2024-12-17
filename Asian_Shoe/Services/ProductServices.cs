@@ -26,12 +26,17 @@ namespace Asian_Shoe.Services
             return repo.GetAllProduct();
         }
 
+        public IEnumerable<Product> GetAllProductsByCategory(int id)
+        {
+           return repo.GetAllProductsByCategory(id);
+        }
+
         public Product GetProductById(int id)
         {
             return repo.GetProductById(id);
         }
 
-        public Product GetProductByName(string name)
+        public IEnumerable<Product> GetProductByName(string name)
         {
             return repo.GetProductByName(name);
         }

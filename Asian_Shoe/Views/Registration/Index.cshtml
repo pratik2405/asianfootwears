@@ -4,11 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>User Details</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -29,6 +26,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.role_id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Password)
@@ -58,6 +58,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+                <td>
+                   @*  @Html.DisplayFor(modelItem => item.role_id) *@
+                    @if(item.role_id==1){
+                        <input type="text" value="Admin"    readonly />
+                    }
+                    else
+                    {
+                        <input type="text" value="User" readonly />
+                    }
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Password)
             </td>

@@ -3,44 +3,77 @@
 @{
     ViewData["Title"] = "Login";
 }
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Clear the form fields after a successful login
+            const loginForm = document.getElementById("loginForm");
+            loginForm.reset();
+        });
+    </script>
+    <style>
+        body{
+            background: linear-gradient(to right, #f7f8fc, #d7e1ec);
+        }
 
+        .container {
+            margin-top:50px;
+            margin-bottom:130px;
+        }
+    </style>
+</head>
+    <body>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <form asp-action="Login" id="loginForm">
+                    <div class="form-group text-center">
+                        <img src="~/Navbar/account.png"  height="150px" width="150px"/>
+                    </div>
+                    <div class="form-group text-center">
+                        <h3>User Login</h3>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group"><h4>Login</h4></div>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div> <br />
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div> 
-                <span style="color:red">
-                    @if (!string.IsNullOrEmpty(ViewBag.Error))
-                    {
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" type="email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <span style="color:red">
+                        @if (!string.IsNullOrEmpty(ViewBag.Error))
+                        {
                             @ViewBag.Error
-                    }
-                </span>
-              <br />
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                        }
+                    </span>
+                    <br />
+
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary w-100" />
+                    </div>
+                    
+                </form>
+                <div class="text-center mt-3">
+                    <a asp-action="Create">
+                        <button class="btn btn-outline-primary w-100">New user? Register here</button>
+                    </a>
+                </div>
             </div>
-        </form>
+           
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+   
+</body>
+</html>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

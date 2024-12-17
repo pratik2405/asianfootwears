@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Asian_Shoe.Models.PurchaseDetails>
+
+@{
+    ViewData["Title"] = "UserPurchase";
+}
+@if (!Model.Any())
+                {
+                        <h4 colspan="5" class="text-center">No purchase available !</h4>
+                        <div class="d-flex justify-content-center">
+                             <img src="~/Navbar/nocart.png" width="600px" height="500px" alt="Alternate Text" />
+                         </div> <br /><br /> <br />
+                }
+                else
+                {
+                   
+                    <span style="color:red">
+            @ViewBag.Error
+        </span>
+<h1>User Purchase</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.Purchase_Details_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.purchase_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_id)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Product_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image_url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.order_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.delivery_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmt)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.Purchase_Details_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.purchase_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_id)
+            </td> *@
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product_name)
+                </td>
+            <td>
+                <img src="@Url.Content(item.Image_url)" height="200" width="200" />
+            </td>
+
+                @* <td>
+                    @Html.DisplayFor(modelItem => item.status_id)
+                </td> *@
+                    <td>
+                        @if (item.status_id == 1)
+                        {
+                            <input type="text" value="Shipped"  readonly/>
+                        }
+                        @if (item.status_id == 2)
+                        {
+                            <input type="text" value="Delivered"  readonly/>
+                        }
+                        @if (item.status_id == 3)
+                        {
+                            <input type="text" value="Order Cancel" readonly/>
+                        }
+                    </td>
+                    <td>
+                        @item.order_Date?.ToString("dd-MM-yyyy")
+                    </td>
+                    <td>
+                        @item.delivery_date?.ToString("dd-MM-yyyy")
+                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmt)
+                </td>
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+                }

@@ -1,62 +1,132 @@
 ﻿@model IEnumerable<Asian_Shoe.Models.Cart>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title>
+    <script>
+        function increaseQuantity(cartId) {
+            // Select the quantity input field by its ID
+            let quantityInput = document.getElementById("quantity_" + cartId);
+            if (quantityInput) {
+                let currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1; // Increment value
+            }
+        }
+
+        function decreaseQuantity(cartId) {
+            // Select the quantity input field by its ID
+            let quantityInput = document.getElementById("quantity_" + cartId);
+            if (quantityInput) {
+                let currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) { // Ensure the value doesn't go below 1
+                    quantityInput.value = currentValue - 1; // Decrement value
+                }
+            }
+        }
+    </script>    
+    </head>
+    <body>
+
+@if (!Model.Any())
+                {
+                        <h4 colspan="5" class="text-center">No product available in cart</h4>
+                        <div class="d-flex justify-content-center">
+                             <img src="~/Navbar/nocart.png" width="600px" height="500px" alt="Alternate Text" />
            
+        </div>
+        <br />
+        <br />
+        <br />
+       
+                }
+                else
+                {
+                   
+                    <span style="color:red">
+            @ViewBag.Error
+        </span>
+ <table class="table">
+    <thead>
+        <tr>  
             <th>
-                Id
+               
             </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image_url)
+                    </th>
             <th>
-                @Html.DisplayNameFor(model => model.User_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
+                @Html.DisplayNameFor(model => model.Product_Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Product_Name)
+                @Html.DisplayNameFor(model => model.Quantity)
             </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Total)
+                    </th>
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-            int count = 1;
+
+        @if(Model.Any()){
+            
+         @foreach (var item in Model) {    
         <tr>
-            <td>
-                @count
+                            <td>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Delete" asp-route-id="@item.Cart_id">
+                                    <img src="~/Navbar/bin.png" height="50px" width="50px" alt="Delete" />
+                                </a>
+                            </td>
+
+                            <td>
+                                <img src="@Url.Content(item.Image_url)" height="200" width="200" />
+                            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                        
+                            <td>
+                                <form method="post" action="@Url.Action("UpdateQuantity", "Cart")">
+                                    <input type="hidden" name="Cart_id" value="@item.Cart_id" />
+
+                                    <!-- Decrease Button -->
+                                    <button type="button" onclick="decreaseQuantity(@item.Cart_id)" class="btn btn-secondary">-</button>
+
+                                    <!-- Quantity Input -->
+                                    <input type="number" id="quantity_@item.Cart_id" name="Quantity" value="@item.Quantity" min="1" style="width: 60px; text-align: center;" />
+
+                                    <!-- Increase Button -->
+                                    <button type="button" onclick="increaseQuantity(@item.Cart_id)" class="btn btn-secondary">+</button>
+                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                    <!-- Submit Button -->
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </form>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+           @*  <td>
+
+                @Html.ActionLink("Details", "Details", new { id=item.Cart_id })
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product_Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Cart_id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Cart_id }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.Cart_id })
-            </td>
-        </tr>
-        count++;
+               *@
+        </tr>  
 }
+<tr>
+                        @ViewBag.Error
+</tr>
+}           
     </tbody>
 </table>
+        <form asp-action="PlaceOrder" asp-controller="Cart" method="post">
+            <button type="submit" class="btn btn-success">Place Order</button>
+        </form>
+}
+</body>
+</html>

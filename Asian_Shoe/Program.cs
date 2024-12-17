@@ -25,7 +25,17 @@ builder.Services.AddScoped<IProductRepo, ProductRepo>();
 builder.Services.AddScoped<ICartRepo, CartRepo>();
 builder.Services.AddScoped<ICartServices, CartServices>();
 
+builder.Services.AddScoped<IPurchaseDetailsRepo, PurchaseDetailsRepo>();
+builder.Services.AddScoped<IPurchaseDetailsServices, PurchaseDetailsServices>();
 
+builder.Services.AddScoped<IPurchaseRepo, PurchaseRepo>();
+builder.Services.AddScoped<IPurchaseServices, PurchaseServices>();
+
+builder.Services.AddScoped<IStatusRepo, StatusRepo>();
+builder.Services.AddScoped<IStatusServices, StatuseServices>();
+
+builder.Services.AddScoped<IRoleRepo, RoleRepo>();
+builder.Services.AddScoped<IRoleServices, RoleServices>();
 
 builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
 

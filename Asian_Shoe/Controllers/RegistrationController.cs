@@ -8,13 +8,16 @@ namespace Asian_Shoe.Controllers
     public class RegistrationController : Controller
     {
         private readonly IRegistrationServices services;
-        public RegistrationController(IRegistrationServices services)
+        private readonly IRoleServices roleServices;
+        public RegistrationController(IRegistrationServices services, IRoleServices roleServices)
         {
-            this.services = services; 
+            this.services = services;
+            this.roleServices = roleServices;
         }
         // GET: RegistrationController
         public ActionResult Index()
         {
+            
             var res = services.GetAllUser();
             return View(res);
         }
@@ -93,6 +96,7 @@ namespace Asian_Shoe.Controllers
                     ViewBag.Error = "Incorrect password or email";
                     return View("Login");
                 }
+                
             }
             catch(Exception e)
             {
@@ -104,6 +108,7 @@ namespace Asian_Shoe.Controllers
         // GET: RegistrationController/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewBag.Role = roleServices.GetRoles();
             var res=services.GetById(id);
             return View(res);
         }

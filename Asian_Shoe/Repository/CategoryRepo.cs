@@ -17,7 +17,6 @@ namespace Asian_Shoe.Repository
             result = db.SaveChanges();
             return result;
         }
-
         public int DeleteCategory(int id)
         {
             int result = 0;

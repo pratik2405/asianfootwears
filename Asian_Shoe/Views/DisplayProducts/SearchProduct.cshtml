@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Asian_Shoe.Models.Product>
+
+@{
+    ViewData["Title"] = "SearchProduct";
+}
+@if (!Model.Any())
+                {
+                        <h4 colspan="5" class="text-center">No product available</h4>
+                        <div class="d-flex justify-content-center">
+                             <img src="~/Navbar/nocart.png" width="600px" height="500px" alt="Alternate Text" />
+                         </div>
+                }
+                else
+                {
+                   
+                    <span style="color:red">
+        @ViewBag.ErrorMessage
+        </span>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card h-200 d-flex flex-column">
+                        <img src="@Url.Content(item.Image_Url)" class="card-img-top" alt="Product Image" style="max-height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Product_name</h5>
+                            <p class="card-text">
+                                <strong></strong> @item.Description<br>
+                                <strong>Category:</strong> @item.Category_name <br />
+                                <strong>Price:</strong> <b> ₹ @item.Price </b><br>
+                                <strong>Stock:</strong> @item.Stock<br>
+
+                            </p>
+                        </div>
+                        <div class="card-footer mt-auto">
+                            @Html.ActionLink("Product Details", "Details", new { id = item.Product_id }, new { @class = "btn btn-sm btn-info  w-30" })
+                            @if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Customer")))
+                            {
+                                @Html.ActionLink("Add To Cart", "Details", new { id = item.Product_id }, new { @class = "btn btn-sm btn-warning  w-30" })
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+                }
+
+
+
+
+

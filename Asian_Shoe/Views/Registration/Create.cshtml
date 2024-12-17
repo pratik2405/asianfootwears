@@ -3,13 +3,98 @@
 @{
     ViewData["Title"] = "Create";
 }
+<style>
+     /* table{
+         padding:60px;
+         border-radius:10px;
+         border-style:solid;
+     } */
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Create">
+                <div class="form-group text-center">
+                    <img src="~/Navbar/account.png" height="100px" width="100px" />
+                </div>
+                <div class="form-group text-center">
+                    <h4>Create New Account</h4>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="First_name" class="control-label"></label>
+                    <input asp-for="First_name" class="form-control" />
+                    <span asp-validation-for="First_name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Last_name" class="control-label"></label>
+                    <input asp-for="Last_name" class="form-control" />
+                    <span asp-validation-for="Last_name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <span style="color:red">
+                    @if (!string.IsNullOrEmpty(ViewBag.Error))
+                    {
+                        @ViewBag.Error
+                    }
+                </span>
+
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-primary w-100" />
+                </div> <br />
+            </form>
+            <div class="text-center">
+                <a asp-action="Login">
+                    <button class="btn btn-outline-primary w-100">Already a user? Login here</button>
+                </a>
+            </div>
+        </div>
+    </div>
+   
+</div>
 
 
 
+@* 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div class="form-group"><h4>Registration</h4></div>
+            
+            <div class="form-group text-center"><h4>Create New Account</h4></div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="First_name" class="control-label"></label>
@@ -46,17 +131,25 @@
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
+            <span style="color:red">
+                @if (!string.IsNullOrEmpty(ViewBag.Error))
+                {
+                    @ViewBag.Error
+                }
+            </span>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" style="width:420px" />
             </div>
         </form>
     </div>
 </div>
 
+<br />
 <div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+    <a asp-action="Login"> <button class="btn btn-outline-primary" style="width:420px">  Already User ? Login here  </button></a>
+</div> *@
+       
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

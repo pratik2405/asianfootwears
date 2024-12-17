@@ -25,11 +25,13 @@
                 <dt class="col-sm-4">Stock</dt>
                 <dd class="col-sm-8">@Model.Stock</dd>
 
+                <dt class="col-sm-4">Category ID</dt>
+                <dd class="col-sm-8">@Model.Category_id</dd>
+
                 <dt class="col-sm-4">Category</dt>
                 <dd class="col-sm-8">@Model.Category_name</dd>
 
-                <dt class="col-sm-4">Category ID</dt>
-                <dd class="col-sm-8">@Model.Category_id</dd>
+               
 
                  @if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Admin")) || !string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Customer")))
                  {
@@ -45,6 +47,12 @@
 </div>
 
 <div class="mt-4">
-    <a class="btn btn-secondary" asp-action="DisplayProduct"> <strong>Back </strong></a>
+    <a class="btn btn-secondary" asp-action="DisplayProduct"> <strong>Back </strong></a> <br /> <br />
 </div>
+
+<img src="~/CommonImage/image (1).jpeg" class="img-fluid" width="1330px" alt="Image description"> <br />
+<img src="~/CommonImage/img2.jpeg" class="img-fluid" width="1330px" alt="Image description"> <br />
+<img src="~/CommonImage/image.jpeg" class="img-fluid" width="1330px" alt="Image description"> <br />
+<br />
+
 

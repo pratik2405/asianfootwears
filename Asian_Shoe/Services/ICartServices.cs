@@ -11,6 +11,9 @@ namespace Asian_Shoe.Services
 
         public int Update(Cart cart);
 
-        public int Delete(Cart cart);
+        public int Delete(int id);
+
+        public int DeleteAll(IEnumerable<Cart> carts);
+        public int savedb();
     }
 }

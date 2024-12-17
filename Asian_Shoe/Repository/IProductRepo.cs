@@ -8,7 +8,9 @@ namespace Asian_Shoe.Repository
 
         Product GetProductById(int id);
 
-        Product GetProductByName(string name);
+        IEnumerable<Product> GetProductByName(string name);
+
+        IEnumerable<Product> GetAllProductsByCategory(int id);
 
         int AddProduct(Product prod);
 

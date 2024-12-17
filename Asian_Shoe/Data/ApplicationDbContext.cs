@@ -17,5 +17,13 @@ namespace Asian_Shoe.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Cart>Carts { get; set; }
+
+        public DbSet<Purchase> Purchases { get; set; }
+
+        public DbSet<PurchaseDetails> PurchasesDetails { get;set; }
+
+        public DbSet<Status>Statuses { get; set; }
+
+        public DbSet<Role>Roles { get; set;}
     }
 }

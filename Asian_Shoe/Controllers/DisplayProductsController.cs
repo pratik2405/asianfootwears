@@ -16,11 +16,31 @@ namespace Asian_Shoe.Controllers
             this.env = env;
         }
 
+        public IActionResult DisplayProductByCat(int id)
+        {
+            var res=services.GetAllProductsByCategory(id);
+            return View(res);
+        }
+
         //Display Product
         public IActionResult DisplayProduct()
-        {
+        {   
             var res = services.GetAllProduct();
             return View(res);
+        }
+
+        public IActionResult SearchProduct(string name)
+        {
+            try
+            {
+                var res = services.GetProductByName(name);
+                return View(res);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View();
+            }
         }
 
         public IActionResult AddCart(int id)

@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Asian_Shoe</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/Navbar/asian.png" height="30px" width="80px" alt="Alternate Text" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,30 +34,67 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Manage Product</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">Registration Details</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">User Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="PurchaseDetails" asp-action="Index">Purchase Details</a>
                             </li>
                         }
                     </ul>
 
-                    <ul class="navbar-nav flex-grow-3 text-end">
+                    <ul class="navbar-nav flex-grow-1">
+                        <form class="d-flex" asp-controller="DisplayProducts" asp-action="SearchProduct" method="get">
+                            <input class="form-control me-2" width="500px" type="search" name="name" placeholder="Search" aria-label="Search">
+                            <button class="btn" type="submit">
+                                <img src="~/Navbar/search.png" height="20px" width="20px" alt="Search" />
+                            </button>
+                        </form>
+                        </ul>
+
+                        <ul class="navbar-nav flex-grow-3 text-end">
                         @if (string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Admin")) && string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Customer")))
                         {
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Create">Register</a>
+                            </li> *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Login"><img src="~/Navbar/login.png" height="20px" width="20px" alt="Alternate Text" /></a>
+                            </li>
+                        }
+                        @if ( !string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Customer")))
+                        { 
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index"><img src="~/Navbar/grocery-store.png" height="20px" width="20px" alt="Alternate Text" /></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Login">Login</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="PurchaseDetails" asp-action="UserPurchase"><img src="~/Navbar/shopping-bag.png" height="20px" width="20px" alt="Alternate Text" /></a>
                             </li>
+                           
                         }
                         @if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Admin")) || !string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Customer")))
                         {
+                              @if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Admin")))
+                             {
+
+                             <li class="nav-item">
+                                    <a class="nav-link text-dark">
+                                    <i>  Welcome <strong>  @HttpContextAccessor.HttpContext.Session.GetString("Admin") </strong> </i>  
+                                </a>
+                                 </li>
+                             }
+                             else
+                             {
+                                 <li class="nav-item">
+                                     <a class="nav-link text-dark">
+                                        <i>  Welcome <strong>@HttpContextAccessor.HttpContext.Session.GetString("Customer")  </strong></i>
+                                    </a>
+                                 </li>
+                             } 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark btn-outline-danger"  asp-area="" asp-controller="Registration" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark btn-danger" asp-area="" asp-controller="Registration" asp-action="Logout">Logout</a>
                             </li>
                         }
+
                     </ul>
                 </div>
             </div>
@@ -68,14 +105,95 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Asian_Shoe - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+    <div class="container-fluid" style="margin:0; padding:0">
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-white"
+                style="background-color: #1c2331">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-between p-4"
+                     style="background-color: #6351ce">
+              
+                <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold"><img src="~/Navbar/asian.png" alt="Alternate Text" height="30px" width="80px" /></h6>
+                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                style="width: 60px; background-color: #7c4dff; height: 2px" />
+                            <p>
+                                Asian is one of the fastest growing and the most loved footwear brands in India. 
+                                Check out our incredible range and become an AsianRider today.
+
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold">
+                                For inquiries about refunds, order issues,
+                                please reach out to us at:
+                            </h6>
+                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                style="width: 60px; background-color: #7c4dff; height: 2px" />
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <i class="fas fa-phone-alt me-2"></i> +91 7057069812
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-envelope me-2"></i> info@asianfootwears.com
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-map-marker-alt me-2"></i> J-20, Udyog Nagar, Peeragarhi, Delhi, New Delhi - 110041
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone-alt me-2"></i> +91 9996027231
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold">Useful links</h6>
+                            <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                                style="width: 60px; background-color: #7c4dff; height: 2px" />
+                            <p>
+                                <a href="#!" class="text-white">Your Account</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-white">Become an Affiliate</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-white">Shipping Rates</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-white">Help</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+            <!-- Copyright -->
+            <div class="text-center mt-4 pt-3 border-top">
+                <p class="mb-0">All Rights Reserved by Asian Footwears Pvt. Ltd. &copy; 2024</p>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

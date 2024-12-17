@@ -9,10 +9,10 @@ namespace Asian_Shoe.Models
         [Key]
         public int User_id {  get; set; }
 
-        
+        [MinLength(2)]
         public string ? First_name { get; set; }
 
-        
+        [MinLength(2)]
         public string? Last_name { get; set; }
 
         
@@ -20,15 +20,21 @@ namespace Asian_Shoe.Models
 
         
         [Display(Name ="Phone Number")]
+        //[Phone]
+        //[MinLength(10)]
+        //[MaxLength(10)]
         public long PhoneNumber { get; set; }
 
         [Required]
+        [EmailAddress]
         public string ?Email { get; set; }
 
          [Required]
+        
         public string? Password { get; set; }
 
-        public int role_id { get; set; }
+
+        public int role_id { get; set; } = 2;
 
         [Display(Name = "Confirm Password")]
         [NotMapped]

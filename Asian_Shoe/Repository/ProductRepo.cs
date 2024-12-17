@@ -1,5 +1,6 @@
 ﻿using Asian_Shoe.Data;
 using Asian_Shoe.Models;
+using System.Linq;
 
 namespace Asian_Shoe.Repository
 {
@@ -49,6 +50,26 @@ namespace Asian_Shoe.Repository
             return res;
         }
 
+        public IEnumerable<Product> GetAllProductsByCategory(int id)
+        {
+
+            var res = (from p in db.Products
+                       join c in db.Categories on p.Category_id equals c.Category_id
+                       where c.Category_id == id
+                       select new Product
+                       {
+                           Product_id = p.Product_id,
+                           Product_name = p.Product_name,
+                           Description = p.Description,
+                           Category_id = p.Category_id,
+                           Category_name = c.Category_name,
+                           Price = p.Price,
+                           Image_Url = p.Image_Url,
+                           Stock = p.Stock
+                       }).ToList();
+            return res;
+        }
+
         public Product GetProductById(int id)
         {
             var res = (from p in db.Products
@@ -68,22 +89,49 @@ namespace Asian_Shoe.Repository
             return res;
         }
 
-        public Product GetProductByName(string name)
+        //public IEnumerable<Product> GetProductByName(string name)
+        //{
+        //    var res = (from p in db.Products
+        //               join c in db.Categories on p.Category_id equals c.Category_id
+        //               where p.Product_name.Contains(name,StringComparison.OrdinalIgnoreCase)
+        //               select new Product
+        //               {
+        //                   Product_id = p.Product_id,
+        //                   Product_name = p.Product_name,
+        //                   Description = p.Description,
+        //                   Category_id = p.Category_id,
+        //                   Category_name = c.Category_name,
+        //                   Price = p.Price,
+        //                   Image_Url = p.Image_Url,
+        //                   Stock = p.Stock
+        //               }).ToList();
+        //    return res;
+        //}
+
+
+        public IEnumerable<Product> GetProductByName(string name)
         {
+            //if (string.IsNullOrWhiteSpace(name))
+            //{
+            //    // If the name is null or empty, return an empty list.
+            //    return Enumerable.Empty<Product>();
+            //}
+
             var res = (from p in db.Products
                        join c in db.Categories on p.Category_id equals c.Category_id
-                       where p.Product_name == name
+                       where p.Product_name.Contains(name)
                        select new Product
                        {
                            Product_id = p.Product_id,
                            Product_name = p.Product_name,
                            Description = p.Description,
-                           Category_id = p.Category_id,
+                           Category_id = c.Category_id,
                            Category_name = c.Category_name,
                            Price = p.Price,
-                           Image_Url=p.Image_Url,
-                           Stock=p.Stock
-                       }).FirstOrDefault();
+                           Image_Url = p.Image_Url,
+                           Stock = p.Stock
+                       }).ToList();
+
             return res;
         }
 

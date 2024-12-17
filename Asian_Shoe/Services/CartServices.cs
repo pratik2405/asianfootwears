@@ -15,9 +15,14 @@ namespace Asian_Shoe.Services
             return repo.AddtoCart(cart);
         }
 
-        public int Delete(Cart cart)
+        public int Delete(int id )
         {
-           return repo.Delete(cart);
+           return repo.Delete(id);
+        }
+
+        public int DeleteAll(IEnumerable<Cart> carts)
+        {
+            return repo.DeleteAll(carts);
         }
 
         public IEnumerable<Cart> GetCartById(int id)
@@ -28,6 +33,11 @@ namespace Asian_Shoe.Services
         public IEnumerable<Cart> GetCarts()
         {
            return repo.GetCarts();
+        }
+
+        public int savedb()
+        {
+            return repo.savedb();
         }
 
         public int Update(Cart cart)

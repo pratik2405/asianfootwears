@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add New Product</a>
 </p>
 <table class="table">
     <thead>
@@ -24,9 +24,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.Category_id)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Category_name)
             </th>
@@ -51,9 +51,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.Category_id)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.Category_name)
             </td>

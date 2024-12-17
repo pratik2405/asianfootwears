@@ -18,15 +18,14 @@
                             <strong></strong> @item.Description<br>
                             <strong>Category:</strong> @item.Category_name <br />
                             <strong>Price:</strong> <b> ₹ @item.Price </b><br>
-                            <strong>Stock:</strong> @item.Stock<br>
-                           
+                            <strong>Stock:</strong> @item.Stock<br>      
                         </p>
                     </div>
                     <div class="card-footer mt-auto">
                         @Html.ActionLink("Product Details", "Details", new { id = item.Product_id }, new { @class = "btn btn-sm btn-info  w-30" })
                         @if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Admin")) || !string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Customer")))
                         {
-                        @Html.ActionLink("Add To Cart", "Details", new { id = item.Product_id }, new { @class = "btn btn-sm btn-warning  w-30" })
+                            @Html.ActionLink("Add To Cart", "AddToCart", "Cart", new { productId = item.Product_id }, new { @class = "btn btn-sm btn-warning w-60 text-center" }) <br />
                         }
 
                     </div>

@@ -9,11 +9,8 @@ namespace Asian_Shoe.Models
         [Key]
         public int Cart_id { get; set; }
 
-
-        [Required]
         public int User_id { get; set; }
 
-        [Required]
         public int Product_id { get; set; }
 
         [Required]
@@ -23,7 +20,13 @@ namespace Asian_Shoe.Models
         public int Price { get; set; }
 
         [NotMapped]
-        [Display(Name ="Product Name")]
-        public string ? Product_Name {  get; set; }
+        [Display(Name = "Product Name")]
+        public string? Product_Name { get; set; }
+        [NotMapped]
+        [Display(Name = "Product")]
+        public string? Image_url { get; set; }
+
+        [NotMapped]
+        public int Total { get; set; }
     }
 }

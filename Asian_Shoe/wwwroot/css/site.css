@@ -1,3 +1,7 @@
+*{
+    margin:0;
+    padding:0;
+}
 html {
   font-size: 14px;
 }
@@ -16,3 +20,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.footer {
+    width: 100%;
+    margin: 0;
+    scroll-margin-bottom:0;
+    padding: 0;
+}
+
+/*    .footer a {
+        transition: color 0.3s ease-in-out;
+    }
+
+        .footer a:hover {
+            color: #ffcc00;
+        }
+
+    .footer ul {
+        padding-left: 0;
+    }
+
+    .footer i {
+        color: #fff;
+    }
+
+    .footer img {
+        max-width: 100%;
+        height: auto;
+    }*/

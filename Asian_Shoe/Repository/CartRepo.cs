@@ -18,15 +18,23 @@ namespace Asian_Shoe.Repository
             return result;
         }
 
-        public int Delete(Cart cart)
+        public int Delete(int id)
         {
             int result = 0;
-            var res = db.Carts.Where(x => x.Product_id == cart.Product_id).SingleOrDefault();
+            var res = db.Carts.Where(x => x.Cart_id == id).SingleOrDefault();
             if (res != null)
             {
                 db.Carts.Remove(res);
                 result=db.SaveChanges();
             }
+            return result;
+        }
+
+        public int DeleteAll(IEnumerable<Cart> carts)
+        {
+            int result = 0;
+            db.Carts.RemoveRange(carts);
+            result = db.SaveChanges();
             return result;
         }
 
@@ -44,7 +52,9 @@ namespace Asian_Shoe.Repository
                           Product_id = c.Product_id,
                           Quantity = c.Quantity,
                           Price = p.Price,
-                          Product_Name = p.Product_name
+                          Product_Name = p.Product_name,
+                          Image_url = p.Image_Url,
+                          Total = p.Price*c.Quantity
                       };
             return res;
         }
@@ -64,21 +74,27 @@ namespace Asian_Shoe.Repository
                           Product_id = c.Product_id,
                           Quantity = c.Quantity,
                           Price = p.Price,
+                          Image_url=p.Image_Url,
+                          Total=p.Price,
                           Product_Name = p.Product_name
                       };
             return res;
+        }
+
+        public int savedb()
+        {
+            return db.SaveChanges();
         }
 
         public int Update(Cart cart)
         {
             int result = 0;
 
-            var res=db.Carts.Where(x=>x.User_id == cart.User_id).SingleOrDefault();
+            var res=db.Carts.Where(x=>x.Cart_id == cart.Cart_id).SingleOrDefault();
 
             if(res != null)
             {
-                res.Product_id = cart.Product_id;
-                res.User_id = cart.User_id;
+                
                 res.Quantity=cart.Quantity;
 
                 result=db.SaveChanges();

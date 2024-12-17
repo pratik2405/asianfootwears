@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Asian_Shoe.Models.PurchaseDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Purchase Details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Purchase_Details_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.purchase_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product_id)
+            </th>
+            <th>
+                 @Html.DisplayNameFor(model => model.status_id) 
+               
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.delivery_date)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.status_name)
+            </th> *@
+            <th>
+                
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Purchase_Details_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.purchase_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product_id)
+            </td>
+            
+               @*  @Html.DisplayFor(modelItem => item.status_id) *@
+                <td>
+                        @if (item.status_id == 1)
+                        {
+                        <input type="text" value="Shipped" readonly />
+                        }
+                        @if (item.status_id == 2)
+                        {
+                        <input type="text" value="Delivered" readonly />
+                        }
+                        @if (item.status_id == 3)
+                        {
+                        <input type="text" value="Order Cancel" readonly />
+                        }
+                </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmt)
+            </td>
+            <td>
+                    @item.delivery_date?.ToString("dd-MM-yyyy")
+            </td>
+         
+             <td>
+                 @Html.ActionLink("Edit", "Edit", new {  id=item.Purchase_Details_id }) 
+               @*  @Html.ActionLink("Details", "Details", new {  id=item.Purchase_Details_id })  *@
+               @*  @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+            </td> 
+        </tr>
+}
+    </tbody>
+</table>
