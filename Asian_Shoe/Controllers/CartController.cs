@@ -147,7 +147,7 @@ namespace Asian_Shoe.Controllers
                         purchase_Services.savedb();
 
                         var latestPurchase = db.Purchases
-                               .OrderByDescending(p => p.Purchase_id) // Or use CreatedDate if available
+                               .OrderByDescending(p => p.Purchase_id) 
                                .FirstOrDefault();
 
                         var purchaseDetail = new PurchaseDetails
