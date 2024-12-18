@@ -1,4 +1,4 @@
-![Screenshot 2024-12-18 162729](https://github.com/user-attachments/assets/a3072bb9-f642-46a4-868f-7bdbaa631f6d)# Asian Footwear - .NET Framework Project
+# Asian Footwear - .NET Framework Project
 
 ## Project Overview
 Asian Footwear is a comprehensive e-commerce web application built using .NET Framework, Entity Framework, and SQL Database.
@@ -73,7 +73,7 @@ It provides seamless functionalities for both users and administrators. also mak
 # Home Page :
 ![Screenshot 2024-12-18 162228](https://github.com/user-attachments/assets/bf120657-8f5c-4989-b621-37a5ff47d3fb)
 ![Screenshot 2024-12-18 164306](https://github.com/user-attachments/assets/13713ba0-3f99-4f94-9844-40f5afc938dc)
-![Uploading Screenshot 2024-12-18 164331.png…]()
+![Screenshot 2024-12-18 164331](https://github.com/user-attachments/assets/6a8f5eb7-f412-45ef-a7a1-4de4a2f9c5ff)
 
 
 # Login :
