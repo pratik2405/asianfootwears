@@ -3,7 +3,7 @@
 ## Project Overview
 Asian Footwear is a comprehensive e-commerce web application built using .NET Framework, Entity Framework, and SQL Database.
 The application features a robust backend integrated with a dynamic frontend designed using HTML, CSS, JavaScript, and Razor views.
-It provides seamless functionalities for both users and administrators. also make Project **Responsive**
+It provides seamless functionalities for both users and administrators , also make Project **Responsive**
 
 ## Features
 
@@ -22,6 +22,7 @@ It provides seamless functionalities for both users and administrators. also mak
 
 5. **Search Products:**
    - Search for products by name using the search box in the navigation bar.
+6. **Responsive Design**
 
 ### Admin Features:
 1. **Manage Products:**
