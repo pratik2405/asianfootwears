@@ -23,6 +23,7 @@ It provides seamless functionalities for both users and administrators , also ma
 5. **Search Products:**
    - Search for products by name using the search box in the navigation bar.
 6. **Responsive Design**
+   - Make UI componant responsive.
 
 ### Admin Features:
 1. **Manage Products:**
