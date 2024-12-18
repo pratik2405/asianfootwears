@@ -41,13 +41,13 @@
                 <input asp-for="Email" class="form-control" readonly />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
+           @*  <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" readonly />
                 <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
-                <label asp-for="role_id" class="control-label"></label>
+                <label class="control-label">Role</label>
                 @* <input asp-for="role_id" class="form-control" /> *@
                 <select asp-for="role_id" class="form-control" asp-items="@(new SelectList(ViewBag.Role,"Role_Id","Role_Name"))"></select>
                 <span asp-validation-for="role_id" class="text-danger"></span>

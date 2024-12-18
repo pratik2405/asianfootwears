@@ -4,11 +4,10 @@
     ViewData["Title"] = "Create";
 }
 <style>
-     /* table{
-         padding:60px;
-         border-radius:10px;
-         border-style:solid;
-     } */
+    body {
+        background: linear-gradient(to right, #f7f8fc, #d7e1ec);
+    }
+
 </style>
 
 <div class="container">
@@ -25,31 +24,31 @@
 
                 <div class="form-group">
                     <label asp-for="First_name" class="control-label"></label>
-                    <input asp-for="First_name" class="form-control" />
+                    <input asp-for="First_name" class="form-control" required />
                     <span asp-validation-for="First_name" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Last_name" class="control-label"></label>
-                    <input asp-for="Last_name" class="form-control" />
+                    <input asp-for="Last_name" class="form-control" required />
                     <span asp-validation-for="Last_name" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Address" class="control-label"></label>
-                    <input asp-for="Address" class="form-control" />
+                    <input asp-for="Address" class="form-control" required />
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="PhoneNumber" class="control-label"></label>
-                    <input asp-for="PhoneNumber" class="form-control" />
+                    <input asp-for="PhoneNumber" class="form-control" minlength="10" maxlength="10" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
+                    <input asp-for="Email" class="form-control"  />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 

@@ -30,9 +30,9 @@
             <th>
                 Role
             </th>
-            <th>
+           @*  <th>
                 @Html.DisplayNameFor(model => model.Password)
-            </th>
+            </th> *@
             
             <th></th>
         </tr>
@@ -68,9 +68,9 @@
                         <input type="text" value="User" readonly />
                     }
                 </td>
-            <td>
+           @*  <td>
                 @Html.DisplayFor(modelItem => item.Password)
-            </td>
+            </td> *@
             
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.User_id }) |

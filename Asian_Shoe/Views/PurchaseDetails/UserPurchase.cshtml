@@ -21,32 +21,21 @@
 <table class="table">
     <thead>
         <tr>
-           @*  <th>
-                @Html.DisplayNameFor(model => model.Purchase_Details_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.purchase_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.user_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.product_id)
-            </th> *@
+         
             <th>
                 @Html.DisplayNameFor(model => model.Product_name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image_url)
+                    <label>Image</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status_id)
+                    <label>Status</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.order_Date)
+                    <label>Order Date</label>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.delivery_date)
+                    <label>Delivery Date</label>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
@@ -70,15 +59,18 @@
                     <td>
                         @if (item.status_id == 1)
                         {
-                            <input type="text" value="Shipped"  readonly/>
+                            <label>Shipped</label>
+                           @*  <input type="text" value="Shipped"  readonly/> *@
                         }
                         @if (item.status_id == 2)
                         {
-                            <input type="text" value="Delivered"  readonly/>
+                            <label>Delivered</label>
+                           @*  <input type="text" value="Delivered"  readonly/> *@
                         }
                         @if (item.status_id == 3)
                         {
-                            <input type="text" value="Order Cancel" readonly/>
+                            <label>Order Cancel</label>
+                           @*  <input type="text" value="Order Cancel" readonly/> *@
                         }
                     </td>
                     <td>

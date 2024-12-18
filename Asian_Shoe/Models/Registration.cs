@@ -29,15 +29,13 @@ namespace Asian_Shoe.Models
         [EmailAddress]
         public string ?Email { get; set; }
 
-         [Required]
-        
+         [Required]        
         public string? Password { get; set; }
 
-
         public int role_id { get; set; } = 2;
-
-        [Display(Name = "Confirm Password")]
+       
         [NotMapped]
+        [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Password can't be match !")]
         public string? ConfirmPassword { get; set; }
 
