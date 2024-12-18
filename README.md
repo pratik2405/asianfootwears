@@ -72,8 +72,8 @@ It provides seamless functionalities for both users and administrators. also mak
 ## Project Overview Image:
 # Home Page :
 ![Screenshot 2024-12-18 162228](https://github.com/user-attachments/assets/bf120657-8f5c-4989-b621-37a5ff47d3fb)
-![Screenshot 2024-12-18 162431](https://github.com/user-attachments/assets/2c48d78c-423a-4b9f-920a-0095cf349088)
-![Screenshot 2024-12-18 162446](https://github.com/user-attachments/assets/6d4bc964-7b87-497b-8e23-2f3635923ce0)
+![Screenshot 2024-12-18 164306](https://github.com/user-attachments/assets/13713ba0-3f99-4f94-9844-40f5afc938dc)
+![Uploading Screenshot 2024-12-18 164331.png…]()
 
 
 # Login :
